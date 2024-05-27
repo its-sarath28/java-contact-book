@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+table {
+  max-height: 30rem;
+  overflow-y: auto;
+}
+
+/* Modal Starts */
+
+.overlay,
+.modal {
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+}
+
+@keyframes overlay-in {
+  0% {
+    scale: 0 0.004;
+  }
+  33% {
+    scale: 1 0.004;
+  }
+  66%,
+  100% {
+    scale: 1 1;
+  }
+}
+
+.overlay {
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgb(0 0 0 / 75%);
+}
+
+.overlay.open {
+  visibility: visible;
+  opacity: 1;
+  animation: overlay-in 0.5s both;
+}
+
+@keyframes modal-in {
+  0%,
+  66% {
+    opacity: 0;
+    visibility: hidden;
+    translate: -50%, -40%;
+  }
+
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.modal {
+  z-index: 2;
+  height: fit-content;
+  width: 430px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 20px 0;
+  translate: -50% -50%;
+  box-shadow: 0 10px 30px rgb(0 0 0 /24%);
+}
+
+.overlay.open .modal {
+  opacity: 1;
+  visibility: visible;
+  animation: modal-in 0.5s;
+}
+
+/* Modal Ends */
